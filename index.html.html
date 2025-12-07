@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>HTML</title>
+  
+  <!-- HTML -->
+  
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <p>Nothing to see here...</p>
+  <!-- Project -->
+  <script src="main.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido de Namoro - Kauan & Iara</title>
+    <style>
+        /* Reset e variáveis */
+        :root {
+            --primary: #e879f9;
+            --secondary: #f472b6;
+            --accent: #fbbf24;
+            --light: #fffbeb;
+            --dark: #0f172a;
+            --gray: #94a3b8;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #f0f4ff 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Decorative elements */
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 3s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .heart:nth-child(1) { top: 20%; left: 10%; }
+        .heart:nth-child(2) { top: 30%; right: 15%; animation-delay: 0.5s; }
+        .heart:nth-child(3) { bottom: 20%; left: 20%; animation-delay: 1s; }
+        .heart:nth-child(4) { bottom: 30%; right: 10%; animation-delay: 1.5s; }
+
+        /* Animation keyframes */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Content */
+        .content {
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .message {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .signature {
+            font-style: italic;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Buttons */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .btn-no {
+            background: linear-gradient(135deg, var(--accent) 0%, #f59e0b 100%);
+            color: white;
+        }
+
+        /* Results */
+        .result {
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+            border-radius: 16px;
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .result p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .emoji {
+            font-size: 3rem;
+            margin: 1rem 0;
+            animation: bounce 0.5s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .buttons button {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pedido de Namoro</h1>
+            <p class="subtitle">Kauan quer pedir em namoro para Iara</p>
+            <div class="hearts">
+                <div class="heart">❤️</div>
+                <div class="heart">❤️</div>
+                <div class="heart">❤️</div>
+                <div class="heart">❤️</div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <div class="message">
+                <p>Kauan,</p>
+                <p>Desde que nos conhecemos, sempre senti algo especial em torno de você. Cada momento ao seu lado é um presente. Hoje, quero compartilhar esse sentimento com você.</p>
+                <p>Quer namorar comigo?</p>
+                <p class="signature">Com todo amor,<br>Kauan</p>
+            </div>
+            
+            <div class="buttons">
+                <button class="btn-yes" onclick="handleResponse(true)">Sim!</button>
+                <button class="btn-no" onclick="handleResponse(false)">Não</button>
+            </div>
+            
+            <div class="result" id="result">
+                <h2 id="result-title"></h2>
+                <p id="result-message"></p>
+                <div class="emoji" id="result-emoji"></div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2023 Pedido de Namoro | Kauan & Iara</p>
+        </footer>
+    </div>
+
+    <script>
+        // Estados da aplicação
+        let state = {
+            response: null,
+            yesCount: 0,
+            noCount: 0
+        };
+
+        // DOM Elements
+        const elements = {
+            result: document.getElementById('result'),
+            resultTitle: document.getElementById('result-title'),
+            resultMessage: document.getElementById('result-message'),
+            resultEmoji: document.getElementById('result-emoji')
+        };
+
+        // Função para lidar com resposta
+        function handleResponse(isYes) {
+            state.response = isYes;
+            
+            if (isYes) {
+                state.yesCount++;
+                showResult("Parabéns!", "Você aceitou o pedido de namoro!", "🎉");
+            } else {
+                state.noCount++;
+                showResult("Tudo bem...", "Entendi sua decisão", "💔");
+            }
+            
+            // Animação de clique
+            animateButton(isYes);
+        }
+
+        // Mostra resultado
+        function showResult(title, message, emoji) {
+            elements.resultTitle.textContent = title;
+            elements.resultMessage.textContent = message;
+            elements.resultEmoji.textContent = emoji;
+            elements.result.classList.add('show');
+        }
+
+        // Animação de clique
+        function animateButton(isYes) {
+            const button = isYes ? document.querySelector('.btn-yes') : document.querySelector('.btn-no');
+            button.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                button.style.transform = '';
+            }, 100);
+        }
+
+        // Inicializa o aplicativo
+        function init() {
+            console.log('Pedido de namoro iniciado');
+        }
+
+        // Inicializa quando carregar
+        window.onload = init;
+    </script>
+</body>
+</html>
